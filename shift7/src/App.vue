@@ -7,9 +7,10 @@
         permanent
         @click="rail = false"
       >
-        <v-list-item
-          prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
-          title="John Leider"
+        <v-list-item class="mdi-menu-icons" 
+        prepend-icon="mdi-menu"
+          title="Repository"
+          value="menu"
           nav
         >
           <template v-slot:append>
@@ -24,12 +25,29 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item prepend-icon="mdi-home-city" title="Home" value="home"></v-list-item>
-          <v-list-item prepend-icon="mdi-account" title="My Account" value="account"></v-list-item>
-          <v-list-item prepend-icon="mdi-account-group-outline" title="Users" value="users"></v-list-item>
+          <v-list-item prepend-icon="mdi-magnify" title="검색" value="magnify"></v-list-item>
+          <v-list-item prepend-icon="mdi-clock-outline" title="업데이트" value="clock"></v-list-item>
+          <v-list-item prepend-icon="mdi-star-outline" title="즐겨찾기" value="star"></v-list-item>
+          <v-list-item prepend-icon="mdi-bell-badge-outline" title="알림" value="bell"></v-list-item>
+          <v-list-item prepend-icon="mdi-file-document-outline" title="최근기록" value="file"></v-list-item>
+          <v-list-item prepend-icon="mdi-cog-outline" title="설정" value="cog"></v-list-item>
+        </v-list>
+        <v-divider></v-divider>
+        <v-list>
+          <v-list-item class="title-font" prepend-icon="mdi-chevron-right" title=" " value="chevron"></v-list-item>
+
+        </v-list>
+        <v-divider></v-divider>
+        <v-list>
+          
+        </v-list>
+        <v-divider></v-divider>
+        <v-list>
+            <v-list-item prepend-icon="mdi-chevron-right" title="공지사항" value="chevron"></v-list-item>
+          <v-list-item prepend-icon="mdi-chevron-right" title="타임로그 / 히스토리" value="chevron"></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main style="height: 250px"></v-main>
+      <v-main style="height: 100vh"></v-main>
     </v-layout>
   </v-card>
   
@@ -53,3 +71,12 @@
     },
   }
 </script>
+
+<style>
+.mdi-menu-icons {
+  margin:   0px 7px;
+}
+.v-list-item-title {
+  font-size: 12px;
+}
+</style>
