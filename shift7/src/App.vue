@@ -7,21 +7,22 @@
         permanent
         @click="rail = false"
       >
-        <v-list-item class="mdi-menu-icons" 
-        prepend-icon="mdi-menu"
+        <v-list-item class="mdi-menu-icons"
+        prepend-icon="mdi-unfold-more-horizontal"
           title="Repository"
           value="menu"
           nav
         >
+        
           <template v-slot:append>
             <v-btn
               variant="text"
               icon="mdi-chevron-left"
               @click.stop="rail = !rail"
-            ></v-btn>
+            >
+          </v-btn>
           </template>
         </v-list-item>
-
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
@@ -30,7 +31,10 @@
           <v-list-item prepend-icon="mdi-star-outline" title="즐겨찾기" value="star"></v-list-item>
           <v-list-item prepend-icon="mdi-bell-badge-outline" title="알림" value="bell"></v-list-item>
           <v-list-item prepend-icon="mdi-file-document-outline" title="최근기록" value="file"></v-list-item>
-          <v-list-item prepend-icon="mdi-cog-outline" title="설정" value="cog"></v-list-item>
+          <v-list-item prepend-icon="mdi-cog-outline" title="설정" value="cog"><Settings/></v-list-item>
+          
+          
+          
         </v-list>
         <v-divider></v-divider>
         <v-list>
@@ -43,19 +47,22 @@
         </v-list>
         <v-divider></v-divider>
         <v-list>
-            <v-list-item prepend-icon="mdi-chevron-right" title="공지사항" value="chevron"></v-list-item>
+          <v-list-item prepend-icon="mdi-chevron-right" title="공지사항" value="chevron"></v-list-item>
           <v-list-item prepend-icon="mdi-chevron-right" title="타임로그 / 히스토리" value="chevron"></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main style="height: 100vh"></v-main>
+      <v-main style="height: 100vh">
+        <View/>
+      </v-main>
     </v-layout>
   </v-card>
-  
-  <router-view />
+  <!-- <router-view /> -->
 </template>
 
 <script setup>
   import { ref } from 'vue'
+  import View from './layouts/default/View.vue'
+  import Settings from './components/Settings.vue'
 
   const drawer = ref(true)
   const rail = ref(true)
@@ -63,6 +70,11 @@
 
 <script>
   export default {
+  components: { Settings },
+    components: [
+      View,
+      Settings
+    ],
     data () {
       return {
         drawer: true,
