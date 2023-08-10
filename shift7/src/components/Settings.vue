@@ -10,7 +10,10 @@
         <v-btn
           dark
           v-bind="props"
+          style="width: 90%; height: 40px; padding: 4px 8px; margin: 0px 0px 4px; "
         >
+          <v-icon style="width: 56px; height: 24px; ">mdi-cog-outline</v-icon>
+          <span style="width: 167px; height: 16px; font-size: 13px;">설정</span>
         </v-btn>
         
       </template>
@@ -85,8 +88,9 @@
 </script>
 
 <style>
-.dialog-bottom-transition-enter-active,
+/* .dialog-bottom-transition-enter-active,
 .dialog-bottom-transition-leave-active {
   transition: transform .2s ease-in-out;
-}
+} */
+
 </style>

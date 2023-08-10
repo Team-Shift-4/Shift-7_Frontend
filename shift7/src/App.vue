@@ -26,13 +26,14 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item prepend-icon="mdi-magnify" title="검색" value="magnify"></v-list-item>
+          <v-list-item prepend-icon="mdi-magnify" title="search" value="magnify" to= "/searchs"></v-list-item>
           <v-list-item prepend-icon="mdi-clock-outline" title="업데이트" value="clock"></v-list-item>
           <v-list-item prepend-icon="mdi-star-outline" title="즐겨찾기" value="star"></v-list-item>
           <v-list-item prepend-icon="mdi-bell-badge-outline" title="알림" value="bell"></v-list-item>
           <v-list-item prepend-icon="mdi-file-document-outline" title="최근기록" value="file"></v-list-item>
-          <v-list-item prepend-icon="mdi-cog-outline" title="설정" value="cog"><Settings/></v-list-item>
-          
+          <v-list-item prepend-icon="mdi-cog-outline" title="설정" value="cog" :to="Settings.to"></v-list-item>
+            <Settings></Settings>
+            <button class="btn btn-outline-light" type="buttom" @click="searchPage">검색</button>
           
           
         </v-list>
@@ -53,6 +54,7 @@
       </v-navigation-drawer>
       <v-main style="height: 100vh">
         <View/>
+        <MyPage/>
       </v-main>
     </v-layout>
   </v-card>
@@ -63,17 +65,29 @@
   import { ref } from 'vue'
   import View from './layouts/default/View.vue'
   import Settings from './components/Settings.vue'
+  import MyPage from './components/MyPage.vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const searchPage = () => {
+  router.push('/Searchs');
+};
 
   const drawer = ref(true)
   const rail = ref(true)
 </script>
 
 <script>
+
+
+
+
+
   export default {
-  components: { Settings },
     components: [
       View,
-      Settings
+      Settings,
+      MyPage,
     ],
     data () {
       return {
@@ -91,4 +105,5 @@
 .v-list-item-title {
   font-size: 12px;
 }
+
 </style>
