@@ -3,15 +3,23 @@
     <v-spacer></v-spacer>
 
       <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
+        <v-icon>mdi-cog</v-icon>
       </v-btn>
 
       <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
+        <v-icon>mdi-bell-badge-outline</v-icon>
       </v-btn>
 
       <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
+        <v-icon>mdi-clock-outline</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-star-outline</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-dots-horizontal</v-icon>
       </v-btn>
   </v-toolbar>
 </template>

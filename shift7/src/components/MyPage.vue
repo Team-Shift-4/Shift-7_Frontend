@@ -1,10 +1,9 @@
 
 <template>
+  <div class="main">
     <v-card
       class="overflow-y-auto"
-      max-height="585"
-      max-width="580"
-      style="margin: 20px 20px;"
+      style="margin: 20px 20px; height: 100vh; width: 35vw;"
     >
       <v-banner
         class="justify-center text-h5 font-weight-light"
@@ -21,16 +20,33 @@
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi earum tenetur. Asperiores dolorem placeat ab nobis iusto culpa, autem molestias molestiae quidem pariatur. Debitis beatae expedita nam facere perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ducimus cupiditate rerum officiis consequuntur laborum doloremque quaerat ipsa voluptates, nobis nam quis nulla ullam at corporis, similique ratione quasi illo!
         </div>
+        
       </v-card-text>
     </v-card>
+    <v-spacer></v-spacer>
+      <PageRightSideNav/>
+    </div>
+    
   </template>
 
+<script setup>
+import PageRightSideNav from '@/layouts/default/PageRightSideNav.vue'
+  
+</script>
+
 <script>
-  export default {
-    
-  }
+export default {
+    components : [
+      PageRightSideNav,
+    ],
+}
 </script>
 
 <style>
-
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background-color: #111;
+}
 </style>

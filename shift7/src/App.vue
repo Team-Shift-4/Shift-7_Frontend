@@ -70,7 +70,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const searchPage = () => {
-  router.push('/Searchs');
+  router.push(`/Searchs`);
 };
 
   const drawer = ref(true)
