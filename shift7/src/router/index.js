@@ -1,11 +1,12 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router';
-import Settings from '@/components/Settings.vue';
+import Settings from '@/views/SettingPage.vue';
+import DocumentPage from '@/components/DocumentPage.vue'
 
 const routes = [
   {
     path: '/',
-    component: () => import('@/layouts/default/Default.vue'),
+    component: () => import('@/views/Home.vue'),
     children: [
       {
         path: '',
@@ -19,6 +20,10 @@ const routes = [
         path: '/setting',
         component: Settings,
       },
+      {
+        path: '/test',
+        component: DocumentPage
+      }
     ],
   },
 ]
