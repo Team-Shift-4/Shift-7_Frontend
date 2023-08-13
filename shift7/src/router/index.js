@@ -1,6 +1,6 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router';
-import Searchs from '@/views/Searchs.vue';
+import Settings from '@/components/Settings.vue';
 
 const routes = [
   {
@@ -16,8 +16,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
       },
       {
-        path: '/searchs',
-        component: Searchs,
+        path: '/setting',
+        component: Settings,
       },
     ],
   },
