@@ -11,8 +11,8 @@
     </v-card-title>
 
     <v-card-subtitle>
-      <v-divider style="width: 80%; color: #111"></v-divider>
-      <v-card style="width: 77%; height: 130px; margin: 10px 0px">
+      <v-divider style="width: 100%; color: #111"></v-divider>
+      <v-card style="width: 100%; height: 130px; margin: 10px 0px">
         <span style="float: left; margin: 5px 20px">name</span>
         <span style="float: right; margin: 5px 20px">--.--.--</span>
         <v-divider
@@ -21,11 +21,13 @@
         <span style="margin: 0px 20px">s</span>
       </v-card>
     </v-card-subtitle>
-    <v-card style="width: 70%; height: 50px; margin: 0px 16px">
+    <v-card style="width: 89%; height: 50px; margin: 0px 16px"> 
+      
       <v-text-field
         variant="underlined"
         style="width: 95%; margin: 0px 5px"
       ></v-text-field>
+      
     </v-card>
   </v-card>
 </template>
@@ -37,6 +39,6 @@
 <style>
 .right-side-main-var {
   height: 100vh;
-  width: 350px;
+  width: 300px;
 }
 </style>
