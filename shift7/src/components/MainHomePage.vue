@@ -1,12 +1,13 @@
 <template>
-    <v-card>
-      <v-layout>
-        <v-app>
+    <v-card >
+      <v-layout >
+        <v-app >
           <v-navigation-drawer
             v-model="drawer"
             :rail="rail"
             permanent
             @click="rail = false"
+            style="background: #111; border-right: 1px solid #767676; color: white;"
           >
             <v-list-item
               class="mdi-menu-icons"
@@ -29,7 +30,7 @@
             <v-list density="compact" nav>
               <v-list-item
                 prepend-icon="mdi-magnify"
-                title="search"
+                title="검색"
                 value="magnify"
               ></v-list-item>
               <v-list-item
@@ -38,6 +39,7 @@
                 value="clock"
               ></v-list-item>
               <v-list-item
+              badge
                 prepend-icon="mdi-star-outline"
                 title="즐겨찾기"
                 value="star"
@@ -53,7 +55,7 @@
                 value="file"
               ></v-list-item>
               <v-list-item prepend-icon="mdi-cog-outline" title="설정" value="cog"
-                ><router-link class="nav-link" to="/setting">1</router-link>
+                >
               </v-list-item>
   
               <Settings></Settings>
@@ -84,8 +86,10 @@
             </v-list>
           </v-navigation-drawer>
           <v-main style="height: 100vh">
-          <HeaderCompo/>
-          <MainPageCompo/>
+          <HeaderTool/>
+          <!-- <TimelogHistoryPage/> -->
+          <!-- <MainPage/> -->
+          <DocumentPage/>
           </v-main>
           <!-- <default-view /> -->
         </v-app>
@@ -96,15 +100,17 @@
   <script setup>
   import { ref } from "vue";
   import Settings from "./Settings.vue";
-  import HeaderCompo from "./HeaderComponent.vue"
-  import MainPageCompo from "./MyPage.vue"
+  import HeaderTool from "./HeaderTool.vue"
+  import DocumentPage from "./DocumentPage.vue"
+  // import MainPage from "./MyPage.vue"
+  // import TimelogHistoryPage from "./TimelogHistoryPage.vue"
   
   const drawer = ref(true);
   const rail = ref(true);
   </script>
   <script>
   export default {
-    components: [Settings, HeaderCompo, MainPageCompo],
+    components: [Settings, HeaderTool, DocumentPage],
     data() {
       return {
         drawer: true,
@@ -113,3 +119,10 @@
     },
   };
   </script>
+
+  <style>
+  .left-side-nav{
+    background: #111;
+    border-right: 1px solid #767676;
+  }
+</style>

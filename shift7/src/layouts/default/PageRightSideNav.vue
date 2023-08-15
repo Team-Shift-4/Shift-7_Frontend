@@ -1,5 +1,5 @@
 <template>
-  <v-card class="right-side-main-var">
+  <v-card class="right-side-main-nav">
     <v-card-title style="margin: 5px 5px">
       <v-btn style="width: 240px" variant="text">
         1. What is Lorem Ipsum?</v-btn
@@ -37,7 +37,7 @@
 </script>
 
 <style>
-.right-side-main-var {
+.right-side-main-nav {
   height: 100vh;
   width: 300px;
 }

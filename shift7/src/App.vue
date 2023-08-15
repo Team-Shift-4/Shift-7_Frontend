@@ -1,17 +1,17 @@
 <template>
   <v-app>
-    <MainHomeCompo/>
+    <MainHomePage/>
   </v-app>
 </template>
 
 <script setup>
-import MainHomeCompo from "./components/MainHomeComponent.vue";
+import MainHomePage from "./components/MainHomePage.vue";
 
 </script>
 
 <script>
 export default {
-  components: {MainHomeCompo},
+  components: {MainHomePage},
 };
 </script>
 

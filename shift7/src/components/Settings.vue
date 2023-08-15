@@ -43,31 +43,21 @@
           lines="two"
           subheader
         >
-          <v-list-subheader>User Controls</v-list-subheader>
-          <v-list-item title="Content filtering" subtitle="Set the content filtering level to restrict apps that can be downloaded"></v-list-item>
-          <v-list-item title="Password" subtitle="Require password for purchase or use password to restrict purchase"></v-list-item>
+          <v-list-subheader prepend-icon="mdi-chevron-right">레포지토리 (Repository)</v-list-subheader>
+          <v-list-item prepend-icon="mdi-chevron-down" title="레포지토리 정보(Repository information)" subtitle=" "></v-list-item>
+          <v-divider></v-divider>
+          <v-list-item title="레포지토리 문서 영역(폴더 구분) / Repository document area (folder division)" subtitle=" " style="margin: 0px 20px"></v-list-item>
+          <v-divider></v-divider>
+          <v-list-item title="레포지토리 어드민 / Repository Admin" subtitle=" " style="margin: 0px 20px"></v-list-item>
+          <v-divider></v-divider>
+          <v-list-item title="권한" subtitle=" " style="margin: 0px 20px"></v-list-item>
         </v-list>
-        <v-divider></v-divider>
         <v-list
           lines="two"
           subheader
         >
-          <v-list-subheader>General</v-list-subheader>
-          <v-list-item title="Notifications" subtitle="Notify me about updates to apps or games that I downloaded">
-            <template v-slot:prepend>
-              <v-checkbox v-model="notifications"></v-checkbox>
-            </template>
-          </v-list-item>
-          <v-list-item title="Sound" subtitle="Auto-update apps at any time. Data charges may apply">
-            <template v-slot:prepend>
-              <v-checkbox v-model="sound"></v-checkbox>
-            </template>
-          </v-list-item>
-          <v-list-item title="Auto-add widgets" subtitle="Automatically add home screen widgets">
-            <template v-slot:prepend>
-              <v-checkbox v-model="widgets"></v-checkbox>
-            </template>
-          </v-list-item>
+        <v-list-subheader>알림 (alarm)</v-list-subheader>
+        <v-list-item prepend-icon="mdi-chevron-down" title="알림 설정 (notification settings)" subtitle=" "></v-list-item>
         </v-list>
       </v-card>
     </v-dialog>

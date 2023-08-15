@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar density="comfortable" title="Application" style="height: 57px;">
+    <v-toolbar density="comfortable" title="Application" style="height: 57px; background: #111; color: white; border-bottom: 1px solid #767676;">
       <v-spacer></v-spacer>
   
         <v-btn icon>
