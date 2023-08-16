@@ -10,7 +10,7 @@
         <v-btn
           dark
           v-bind="props"
-          style="width: 90%; height: 40px; padding: 4px 8px; margin: 0px 0px 4px; "
+          style="width: 90%; height: 40px; padding: 4px 8px; margin: 0px 0px 4px; background: #111;"
         >
           <v-icon style="width: 56px; height: 24px; ">mdi-cog-outline</v-icon>
           <span style="width: 167px; height: 16px; font-size: 13px;">설정</span>

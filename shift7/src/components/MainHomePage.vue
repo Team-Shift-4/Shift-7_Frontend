@@ -54,10 +54,16 @@
                 title="최근기록"
                 value="file"
               ></v-list-item>
-              <v-list-item prepend-icon="mdi-cog-outline" title="설정" value="cog"
+              <router-link class="nav-link" active-class="active" to="/setting">
+              <v-list-item 
+              prepend-icon="mdi-cog-outline" 
+              title="설정" 
+              value="cog"
+              type="button"
+              @click="testClick"
                 >
               </v-list-item>
-  
+            </router-link>
               <Settings></Settings>
             </v-list>
             <v-divider></v-divider>
@@ -104,6 +110,12 @@
   import DocumentPage from "./DocumentPage.vue"
   // import MainPage from "./MyPage.vue"
   // import TimelogHistoryPage from "./TimelogHistoryPage.vue"
+  import { useRouter } from "vue-router";
+
+  const router = useRouter();
+  const testClick = () => {
+    router.push('/setting');
+  };
   
   const drawer = ref(true);
   const rail = ref(true);
