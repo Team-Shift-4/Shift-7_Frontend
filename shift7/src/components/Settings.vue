@@ -73,10 +73,11 @@
         sound: true,
         widgets: false,
       }
-    }
+    },
+    
   }
-</script>
 
+</script>
 <style>
 /* .dialog-bottom-transition-enter-active,
 .dialog-bottom-transition-leave-active {

@@ -1,7 +1,8 @@
 <template>
-    <v-card >
+    <v-card-list>
       <v-layout >
         <v-app >
+          
           <v-navigation-drawer
             v-model="drawer"
             :rail="rail"
@@ -54,26 +55,26 @@
                 title="최근기록"
                 value="file"
               ></v-list-item>
-              <router-link class="nav-link" active-class="active" to="/setting">
               <v-list-item 
               prepend-icon="mdi-cog-outline" 
               title="설정" 
               value="cog"
-              type="button"
-              @click="testClick"
                 >
               </v-list-item>
-            </router-link>
-              <Settings></Settings>
+            
+              <Settings/>
             </v-list>
             <v-divider></v-divider>
             <v-list>
               <v-list-item
                 class="title-font"
                 prepend-icon="mdi-chevron-right"
-                title=" "
+                title="Page"
                 value="chevron"
               ></v-list-item>
+              <div>
+                <!-- <v-list-item :to="item[0].link" link>1page</v-list-item> -->
+              </div>
             </v-list>
             <v-divider></v-divider>
             <v-list> </v-list>
@@ -96,11 +97,12 @@
           <!-- <TimelogHistoryPage/> -->
           <!-- <MainPage/> -->
           <DocumentPage/>
+          <!-- <router-view/> -->
           </v-main>
           <!-- <default-view /> -->
         </v-app>
       </v-layout>
-    </v-card>
+    </v-card-list>
   </template>
   
   <script setup>
@@ -108,27 +110,37 @@
   import Settings from "./Settings.vue";
   import HeaderTool from "./HeaderTool.vue"
   import DocumentPage from "./DocumentPage.vue"
-  // import MainPage from "./MyPage.vue"
-  // import TimelogHistoryPage from "./TimelogHistoryPage.vue"
+  import MyPage from "./MyPage.vue"
+  import TimelogHistoryPage from "./TimelogHistoryPage.vue"
   import { useRouter } from "vue-router";
 
   const router = useRouter();
-  const testClick = () => {
-    router.push('/setting');
-  };
-  
+
   const drawer = ref(true);
   const rail = ref(true);
   </script>
   <script>
   export default {
-    components: [Settings, HeaderTool, DocumentPage],
+    components: [Settings, HeaderTool, DocumentPage, MyPage, TimelogHistoryPage],
     data() {
       return {
         drawer: true,
         rail: true,
       };
     },
+    // state: () => ({
+    //   items: [
+    //     {link: '/doc'},
+    //     {link: '/mypage'},
+    //     {link: '/th'},
+    //     {link: '/main'},
+    //   ],
+    // }),
+    // computed: {
+    //   items(){
+    //     return this.$store.state.menu.items
+    //   }
+    // }
   };
   </script>
 

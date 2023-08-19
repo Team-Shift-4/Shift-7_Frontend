@@ -1,5 +1,7 @@
 <template>
-  <v-card class="right-side-edit-nav overflow-y-auto">
+  <v-card-list class="right-side-edit-nav overflow-y-auto">
+    <v-layout >
+      <v-app style="background: #111;">
     <v-card-text>
       <v-btn style="margin: 5px 12px;">
         <v-icon icon="mdi-format-italic" style="width: 50%;"></v-icon>
@@ -22,7 +24,7 @@
         class="mb-4"
         style="
           width: 260px;
-          background-color: #111;
+          background-color: #343434;
           color: white;
           border: 1px solid #777;
         "
@@ -30,7 +32,9 @@
         {{ EditSet[a] }}
       </v-btn>
     </v-card-text>
-  </v-card>
+  </v-app>
+  </v-layout>
+  </v-card-list>
 </template>
 
 <script>
@@ -56,11 +60,10 @@ export default {
 .right-side-edit-nav {
   height: 100vh;
   width: 350px;
-  background: #111;
   border-left: 1px solid #767676;
 }
 .edit-set {
   height: 80%;
-  width: 260px;
+  width: 200px;
 }
 </style>
