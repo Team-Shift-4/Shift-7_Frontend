@@ -3,7 +3,7 @@
   <div class="main">
     <v-card
       class="overflow-y-auto"
-      style="margin: 20px 20px; height: 100vh; width: 35vw;"
+      style="margin: 10px 50px; height: 89vh; width: 41vw;"
     >
       <v-banner
         class="justify-center text-h5 font-weight-light"
@@ -24,15 +24,16 @@
       </v-card-text>
       
     </v-card>
+    <div class="l-line"></div>
     <v-card
       class="overflow-y-auto"
-      style="margin: 20px 20px; height: 100vh; width: 35vw;"
+      style="margin: 10px 50px; height: 89vh; width: 41vw;"
     >
       <v-banner
         class="justify-center text-h5 font-weight-light"
         sticky
       >
-      <h1>My Work</h1>
+      <h1>My Goal</h1>
       </v-banner>
   
       <v-card-text>
@@ -48,20 +49,16 @@
       
     </v-card>
     <v-spacer></v-spacer>
-      <PageRightSideNav/>
     </div>
     
   </template>
 
 <script setup>
-import PageRightSideNav from '@/layouts/default/PageRightSideNav.vue'
-  
 </script>
 
 <script>
 export default {
     components : [
-      PageRightSideNav,
     ],
 }
 </script>
@@ -73,5 +70,11 @@ export default {
 }
 h1 {
   font-weight: 300;
+}
+.l-line{
+  margin: 40px 0px;
+  border-left : 0.5px solid #767676;
+
+    height : 80vh;
 }
 </style>

@@ -1,51 +1,46 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router';
-import Settings from '@/views/SettingPage.vue';
-import DocumentPage from '@/components/DocumentPage.vue'
-// import MyPage from '@/components/MyPage.vue'
-// import TimelogHistory from '@/components/TimelogHistory.vue'
+// import Settings from '@/views/SettingPage.vue';
 // import MainHomePage from '@/components/MainHomePage.vue'
 
 const routes = [
   {
     path: '/',
-    component: () => import('@/views/Home.vue'),
+    component: () => import('@/components/MainHomePage.vue'),
     children: [
       {
-        path: '',
-        name: 'Home',
+        path: '/',
+        name: 'mypage',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
-      },
-      
-    ],
-  },
-    {
-        path: '/set',
-        name: 'set',
-        component: Settings,
+        component: () => import(/* webpackChunkName: "home" */ '@/components/MyPage.vue'),
       },
       {
         path: '/doc',
         name: 'doc',
-        component: DocumentPage
+        component: () => import('@/components/DocumentPage.vue')
+      },
+      {
+        path: '/doc/edit',
+        name: 'docedit',
+        component: () => import('@/components/DocumentEditPage.vue')
+      },
+      {
+        path: '/th',
+        name: 'th',
+        component: () => import('@/components/TimelogHistoryPage.vue')
       },
       // {
-      //   path: '/mypage',
-      //   name: 'mypage',
-      //   component: MyPage
+      //   path: '/set',
+      //   name: 'set',
+      //   component: () => import ('@/components/Settings.vue')
       // },
-      // {
-      //   path: '/th',
-      //   name: 'th',
-      //   component: TimelogHistory
-      // },
-    // path: '/main',
-    // name: 'main',
-    // component: MainHomePage
-  // },
+    ],
+  },
+
+
+
 ]
 
 const router = createRouter({

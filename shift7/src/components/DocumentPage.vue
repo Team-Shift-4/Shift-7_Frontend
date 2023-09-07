@@ -2,7 +2,7 @@
   <div class="main">
     <v-card
       class="overflow-y-auto"
-      style="margin: 30px 30px; height: 83vh; width: 100vw; background: #111"
+      style="margin: 30px 30px; height: 83vh; width: 69vw; background: #111"
     >
       <v-banner
         class="justify-left text-h5 font-weight-light"
@@ -74,31 +74,26 @@
     </v-card>
 
     <v-spacer></v-spacer>
-    <!-- <PageRightSideNav/> -->
-    <EditSideNav />
+    <PageRightSideNav />
   </div>
 </template>
 
 <script setup>
-// import PageRightSideNav from '@/layouts/default/PageRightSideNav.vue'
-import EditSideNav from "@/layouts/default/EditSideNav.vue";
+import PageRightSideNav from "@/layouts/default/PageRightSideNav.vue";
 </script>
 
 
 <script>
 export default {
-  components: [
-    //   PageRightSideNav,
-    EditSideNav,
-  ],
+  components: [PageRightSideNav],
 };
 </script>
 
 <style scoped>
 ::-webkit-scrollbar-track {
-    background: #111;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #767676;
-  }
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #767676;
+}
 </style>

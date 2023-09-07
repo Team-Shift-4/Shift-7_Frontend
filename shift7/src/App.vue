@@ -1,8 +1,6 @@
 <template>
   <v-app>
-    <!-- <router-link :to="{name: 'main'}">0page</router-link>
-    <router-view></router-view> -->
-    <MainHomePage/>
+    <router-view></router-view>
   </v-app>
 </template>
 
