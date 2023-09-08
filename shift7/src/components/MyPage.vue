@@ -3,11 +3,12 @@
   <div class="main">
     <v-card
       class="overflow-y-auto"
-      style="margin: 10px 50px; height: 89vh; width: 41vw;"
+      style="margin: 10px 50px; height: 89vh; width: 41vw; background-color: #111; color: #989898;"
     >
       <v-banner
         class="justify-center text-h5 font-weight-light"
         sticky
+        style="background-color: #111; color: white;"
       >
       <h1>My Work</h1>
       </v-banner>
@@ -27,11 +28,12 @@
     <div class="l-line"></div>
     <v-card
       class="overflow-y-auto"
-      style="margin: 10px 50px; height: 89vh; width: 41vw;"
+      style="margin: 10px 50px; height: 89vh; width: 41vw; background-color: #111; color: #989898;"
     >
       <v-banner
         class="justify-center text-h5 font-weight-light"
         sticky
+        style="background-color: #111; color: white;"
       >
       <h1>My Goal</h1>
       </v-banner>
@@ -76,5 +78,15 @@ h1 {
   border-left : 0.5px solid #767676;
 
     height : 80vh;
+}
+::-webkit-scrollbar-track {
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #767676;
+  border-radius: 10px;
+}
+::-webkit-scrollbar {
+  width: 4px;
 }
 </style>

@@ -36,6 +36,7 @@
               prepend-icon="mdi-magnify"
               title="검색"
               value="magnify"
+              @click="SearchsModal=true"
             ></v-list-item>
             <v-list-item
               prepend-icon="mdi-clock-outline"
@@ -109,6 +110,7 @@
         <v-main style="height: 100vh">
           <HeaderTool />
           <router-view />
+          <SearchModal v-if="SearchsModal" @close-modal="SearchsModal=false"></SearchModal>
         </v-main>
       </v-app>
     </v-layout>
@@ -123,6 +125,7 @@ import DocumentPage from "./DocumentPage.vue";
 import MyPage from "./MyPage.vue";
 import TimelogHistoryPage from "./TimelogHistoryPage.vue";
 import { useRouter } from "vue-router";
+import SearchModal from "@/views/SearchsModal.vue"
 
 const router = useRouter();
 
@@ -131,11 +134,12 @@ const rail = ref(true);
 </script>
   <script>
 export default {
-  components: [Settings, HeaderTool, DocumentPage, MyPage, TimelogHistoryPage],
+  components: [Settings, HeaderTool, DocumentPage, MyPage, TimelogHistoryPage, SearchModal],
   data() {
     return {
       drawer: true,
       rail: true,
+      SearchsModal: false,
     };
   },
   methods: {

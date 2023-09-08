@@ -95,5 +95,9 @@ export default {
 }
 ::-webkit-scrollbar-thumb {
   background: #767676;
+  border-radius: 10px;
+}
+::-webkit-scrollbar {
+  width: 4px;
 }
 </style>

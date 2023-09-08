@@ -19,19 +19,19 @@
         <v-divider
           style="width: 90%; margin: 0px 12px; margin-top: 30px"
         ></v-divider>
-        <span style="margin: 0px 20px">s</span>
+        <span style="margin: 0px 20px">comment...</span>
       </v-card>
     </v-card-subtitle>
-
+    
     <v-card
       style="
-        width: 260px;
+        width: 220px;
         height: 55px;
         background-color: #212121;
         color: white;
         position: absolute;
         bottom: 0%;
-        margin: 20px;
+        margin: 20px 30px;
       "
     >
       <v-text-field
