@@ -36,34 +36,37 @@
               prepend-icon="mdi-magnify"
               title="검색"
               value="magnify"
-              @click="SearchsModal=true"
+              @click="SearchsModal = true"
             ></v-list-item>
             <v-list-item
               prepend-icon="mdi-clock-outline"
               title="업데이트"
               value="clock"
+              @click="UpdatesModal = true"
             ></v-list-item>
             <v-list-item
               badge
               prepend-icon="mdi-star-outline"
               title="즐겨찾기"
               value="star"
+              @click="FavoritessModal = true"
             ></v-list-item>
             <v-list-item
               prepend-icon="mdi-bell-badge-outline"
               title="알림"
               value="bell"
+              @click="AlarmsModal = true"
             ></v-list-item>
             <v-list-item
               prepend-icon="mdi-file-document-outline"
               title="최근기록"
               value="file"
+              @click="RecentrecordssModal = true"
             ></v-list-item>
             <!-- <v-list-item
               prepend-icon="mdi-cog-outline"
               title="설정"
               value="cog"
-              @click="clickSet"
             ></v-list-item> -->
             <v-list-item prepend-icon="mdi-cog-outline" value="cog1"
               ><Settings />
@@ -110,7 +113,26 @@
         <v-main style="height: 100vh">
           <HeaderTool />
           <router-view />
-          <SearchModal v-if="SearchsModal" @close-modal="SearchsModal=false"></SearchModal>
+          <SearchModal
+            v-if="SearchsModal"
+            @close-search-modal="SearchsModal = false"
+          ></SearchModal>
+          <UpdateModal
+            v-if="UpdatesModal"
+            @close-update-modal="UpdatesModal = false"
+          ></UpdateModal>
+          <FavoritesModal
+            v-if="FavoritessModal"
+            @close-favorites-modal="FavoritessModal = false"
+          ></FavoritesModal>
+          <AlarmModal
+            v-if="AlarmsModal"
+            @close-alarm-modal="AlarmsModal = false"
+          ></AlarmModal>
+          <RecentrecordsModal
+            v-if="RecentrecordssModal"
+            @close-recentrecords-modal="RecentrecordssModal = false"
+          ></RecentrecordsModal>
         </v-main>
       </v-app>
     </v-layout>
@@ -119,13 +141,17 @@
   
   <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import Settings from "./Settings.vue";
 import HeaderTool from "./HeaderTool.vue";
 import DocumentPage from "./DocumentPage.vue";
 import MyPage from "./MyPage.vue";
 import TimelogHistoryPage from "./TimelogHistoryPage.vue";
-import { useRouter } from "vue-router";
-import SearchModal from "@/views/SearchsModal.vue"
+import SearchModal from "./SearchsModal.vue";
+import UpdateModal from "./UpdatesModal.vue";
+import FavoritesModal from "./FavoritesModal.vue";
+import AlarmModal from "./AlarmModal.vue";
+import RecentrecordsModal from "./RecentrecordsModal.vue";
 
 const router = useRouter();
 
@@ -134,12 +160,27 @@ const rail = ref(true);
 </script>
   <script>
 export default {
-  components: [Settings, HeaderTool, DocumentPage, MyPage, TimelogHistoryPage, SearchModal],
+  components: [
+    Settings,
+    HeaderTool,
+    DocumentPage,
+    MyPage,
+    TimelogHistoryPage,
+    SearchModal,
+    UpdateModal,
+    FavoritesModal,
+    AlarmModal,
+    RecentrecordsModal,
+  ],
   data() {
     return {
       drawer: true,
       rail: true,
       SearchsModal: false,
+      UpdatesModal: false,
+      FavoritessModal: false,
+      AlarmsModal: false,
+      RecentrecordssModal: false,
     };
   },
   methods: {
