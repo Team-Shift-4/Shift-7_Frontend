@@ -20,6 +20,9 @@
             value="menu"
             nav
           >
+          <!-- <v-btn
+            icon="mdi-unfold-more-horizontal"
+            ></v-btn> -->
             <template v-slot:append>
               <v-btn
                 variant="text"
@@ -181,6 +184,7 @@ export default {
       FavoritessModal: false,
       AlarmsModal: false,
       RecentrecordssModal: false,
+      AlarmTools: true,
     };
   },
   methods: {
