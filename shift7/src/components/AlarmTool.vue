@@ -5,7 +5,7 @@
       <h3 style="margin: 10px;">페이지 알림 설정</h3>
       
       <v-divider></v-divider>
-      <h4>최근 소식</h4>
+      <h4>최근 알림</h4>
       <p>name : 페이지 업데이트</p>
       <p>~~월~~일 . Repository</p>
     </div>
