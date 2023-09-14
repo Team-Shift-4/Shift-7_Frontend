@@ -31,6 +31,11 @@ const routes = [
         name: 'th',
         component: () => import('@/components/TimelogHistoryPage.vue')
       },
+      {
+        path: '/an',
+        name: 'an',
+        component: () => import('@/components/AnnouncementPage.vue')
+      },
       // {
       //   path: '/set',
       //   name: 'set',

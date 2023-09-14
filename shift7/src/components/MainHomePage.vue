@@ -35,6 +35,7 @@
           <v-divider></v-divider>
 
           <v-list density="compact" nav>
+            
             <v-list-item
               prepend-icon="mdi-magnify"
               title="검색"
@@ -66,14 +67,17 @@
               value="file"
               @click="RecentrecordssModal = true"
             ></v-list-item>
-            <!-- <v-list-item
+
+            <v-list-item
               prepend-icon="mdi-cog-outline"
               title="설정"
               value="cog"
-            ></v-list-item> -->
-            <v-list-item prepend-icon="mdi-cog-outline" value="cog1"
-              ><Settings />
-            </v-list-item>
+              @click="clickSetDialog"
+              ref="Setting_Com"
+            ></v-list-item>
+            <Settings ref="Setting_Com"/>
+            <div style="margin: 20px;"></div>
+
           </v-list>
           <v-divider></v-divider>
           <v-list>
@@ -103,7 +107,8 @@
               prepend-icon="mdi-chevron-right"
               title="공지사항"
               value="chevron-1"
-            ></v-list-item>
+              @click="clickAnPage"
+            ><router-link :to="{ name: 'an' }"></router-link></v-list-item>
             <v-list-item
               prepend-icon="mdi-chevron-right"
               title="타임로그 / 히스토리"
@@ -112,6 +117,8 @@
               ><router-link :to="{ name: 'th' }"></router-link
             ></v-list-item>
           </v-list>
+          
+          
         </v-navigation-drawer>
         <v-main style="height: 100vh">
           <HeaderTool />
@@ -137,7 +144,9 @@
             @close-recentrecords-modal="RecentrecordssModal = false"
           ></RecentrecordsModal>
         </v-main>
+        
       </v-app>
+      
     </v-layout>
   </v-card-list>
 </template>
@@ -155,6 +164,7 @@ import UpdateModal from "./UpdatesModal.vue";
 import FavoritesModal from "./FavoritesModal.vue";
 import AlarmModal from "./AlarmModal.vue";
 import RecentrecordsModal from "./RecentrecordsModal.vue";
+import AnnouncementPage from "./AnnouncementPage.vue";
 
 const router = useRouter();
 
@@ -174,6 +184,7 @@ export default {
     FavoritesModal,
     AlarmModal,
     RecentrecordsModal,
+    AnnouncementPage,
   ],
   data() {
     return {
@@ -202,6 +213,14 @@ export default {
       this.$router.push({
         name: "th",
       });
+    },
+    clickAnPage() {
+      this.$router.push({
+        name: "an",
+      });
+    },
+    clickSetDialog() {
+      this.$refs.Setting_Com.dialog = "true";
     },
   },
 };

@@ -11,10 +11,10 @@
   >
     <v-spacer></v-spacer>
 
-    <v-btn icon>
-      <!-- <v-icon>mdi-cog</v-icon> -->
+    <v-btn icon @click="clickDocEditPage">
       <v-icon>mdi-file-edit-outline</v-icon>
-      <!-- 설정 -->
+      <router-link :to="{name: 'docedit'}"></router-link>
+      <!-- 편집 -->
     </v-btn>
 
     <v-btn icon @click="AlarmTools = true">
@@ -27,10 +27,8 @@
       <!-- 전체 파일 업데이트 현황 -->
     </v-btn>
 
-    <v-btn icon @click="Star()">
-      
-      <v-icon v-if="StarTools=true">mdi-star</v-icon>
-      <v-icon v-if="StarTools=false">mdi-star-outline</v-icon>
+    <v-btn icon>
+      <v-icon>mdi-star-outline</v-icon>
       <!-- 현재 페이지 즐겨찾기 추가 -->
     </v-btn>
 
@@ -46,6 +44,7 @@
   <script setup>
 import AlarmTool from "./AlarmTool.vue";
 import UpdateTool from "./UpdateTool.vue";
+
 </script>
   <script>
 export default {
@@ -56,17 +55,14 @@ export default {
     return {
       AlarmTools: false,
       UpdateTools: false,
-      StarTools: false,
     };
   },
   methods: {
-    Star() {
-      if(this.StarTools==true){
-        this.StarTools=false;
-      } else if(this.StarTools==false){
-        this.StarTools=true;
-      }
-    },
+    clickDocEditPage() {
+      this.$router.push({
+        name: "docedit",
+      });
+    }
   },
 };
 </script>
