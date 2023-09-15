@@ -37,9 +37,10 @@
     min-height: 90vh;
     margin: 58px 0px;
     right: 0;
-    z-index: 10;
+    
     background-color: white;
     border-radius: 10px;
     opacity: 1;
+    z-index: 10;
   }
   </style>
