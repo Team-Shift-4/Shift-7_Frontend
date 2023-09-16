@@ -16,13 +16,11 @@
           <v-list-item
             class="mdi-menu-icons"
             prepend-icon="mdi-unfold-more-horizontal"
+            @click="TeamTools = !TeamTools"
             title="Repository"
             value="menu"
             nav
           >
-          <!-- <v-btn
-            icon="mdi-unfold-more-horizontal"
-            ></v-btn> -->
             <template v-slot:append>
               <v-btn
                 variant="text"
@@ -32,10 +30,51 @@
               </v-btn>
             </template>
           </v-list-item>
+          <div
+            style="
+              background: rgba(255, 255, 255, 0.7);
+              color: #111;
+              position: absolute;
+              display: block;
+              margin: auto;
+              width: 300px;
+              height: auto;
+              z-index: 10;
+              border-radius: 10px;
+            "
+          >
+            <v-list class="Unfold_List_Item" v-if="TeamTools"
+              ><div style="float: left">user@mail.com</div>
+              <v-btn
+                icon
+                style="
+                  float: right;
+                  height: 24px;
+                  width: 24px;
+                  background: rgba(255, 255, 255, 0);
+                  margin: 2px 10px;
+                "
+                @click="Unfold_List_Dots_ListTools = !Unfold_List_Dots_ListTools"
+                ><v-icon>mdi-dots-horizontal</v-icon>
+                </v-btn><br />
+              <div>Team Project1</div>
+              <div>Team Project2</div>
+              <div>Team Project3</div>
+              <v-divider></v-divider>
+
+              <div>추가</div>
+              <div>편집</div>
+            </v-list>
+
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.9); color: #111; position: absolute; z-index: 11; margin: 40px 180px; width: 200px;">
+          <v-list v-if="Unfold_List_Dots_ListTools" :items="ULDLTs">
+          
+          </v-list>
+        </div>
           <v-divider></v-divider>
 
           <v-list density="compact" nav>
-            
             <v-list-item
               prepend-icon="mdi-magnify"
               title="검색"
@@ -75,9 +114,8 @@
               @click="clickSetDialog"
               ref="Setting_Com"
             ></v-list-item>
-            <Settings ref="Setting_Com"/>
-            <div style="margin: 20px;"></div>
-
+            <Settings ref="Setting_Com" />
+            <div style="margin: 20px"></div>
           </v-list>
           <v-divider></v-divider>
           <v-list>
@@ -108,7 +146,8 @@
               title="공지사항"
               value="chevron-1"
               @click="clickAnPage"
-            ><router-link :to="{ name: 'an' }"></router-link></v-list-item>
+              ><router-link :to="{ name: 'an' }"></router-link
+            ></v-list-item>
             <v-list-item
               prepend-icon="mdi-chevron-right"
               title="타임로그 / 히스토리"
@@ -117,12 +156,12 @@
               ><router-link :to="{ name: 'th' }"></router-link
             ></v-list-item>
           </v-list>
-          
-          
         </v-navigation-drawer>
         <v-main style="height: 100vh">
           <HeaderTool />
+
           <router-view />
+
           <SearchModal
             v-if="SearchsModal"
             @close-search-modal="SearchsModal = false"
@@ -144,9 +183,7 @@
             @close-recentrecords-modal="RecentrecordssModal = false"
           ></RecentrecordsModal>
         </v-main>
-        
       </v-app>
-      
     </v-layout>
   </v-card-list>
 </template>
@@ -195,7 +232,9 @@ export default {
       FavoritessModal: false,
       AlarmsModal: false,
       RecentrecordssModal: false,
-      AlarmTools: true,
+      TeamTools: false,
+      Unfold_List_Dots_ListTools: false,
+      ULDLTs: [{title: "Create a team"}, {title: "편집"}]
     };
   },
   methods: {
@@ -227,8 +266,4 @@ export default {
 </script>
 
   <style>
-.left-side-nav {
-  background: #111;
-  border-right: 1px solid #767676;
-}
 </style>

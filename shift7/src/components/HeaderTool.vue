@@ -36,7 +36,12 @@
       <!-- 더보기 -->
     </v-btn>
   </v-toolbar>
-  <v-list class="List_Items" v-if="ListTools" :items="items" @click:select="console.log(value)"></v-list>
+  <v-list
+    class="Dots_List_Items"
+    v-if="ListTools"
+    :items="items"
+    @click:select="console.log(value)"
+  ></v-list>
   <AlarmTool v-if="AlarmTools" @close-alarm-tool="AlarmTools = false" />
   <UpdateTool v-if="UpdateTools" @close-update-tool="UpdateTools = false" />
 </template>
@@ -56,7 +61,12 @@ export default {
       AlarmTools: false,
       UpdateTools: false,
       ListTools: false,
-      items: [{ title: "13213212", value: "test1" }, { title: "23", value: "test2" }, { title: "34", value: "test3" }],
+      items: [
+        { title: "페이지 기록", value: "test1" },
+        { title: "삭제", value: "test2" },
+        { title: "로그아웃", value: "test3"},
+        { title: "Test Case", value: "test4" },
+      ],
     };
   },
   methods: {
@@ -70,7 +80,7 @@ export default {
 </script>
 
 <style scoped>
-.List_Items {
+.Dots_List_Items {
   width: 282px;
   height: auto;
   margin: auto;
