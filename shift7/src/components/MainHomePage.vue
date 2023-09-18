@@ -32,7 +32,7 @@
           </v-list-item>
           <div
             style="
-              background: rgba(255, 255, 255, 0.7);
+              background: rgba(255, 255, 255, 0.9);
               color: #111;
               position: absolute;
               display: block;
@@ -42,6 +42,7 @@
               z-index: 10;
               border-radius: 10px;
             "
+            v-if="rail==false"
           >
             <v-list class="Unfold_List_Item" v-if="TeamTools"
               ><div style="float: left">user@mail.com</div>
@@ -54,9 +55,11 @@
                   background: rgba(255, 255, 255, 0);
                   margin: 2px 10px;
                 "
-                @click="Unfold_List_Dots_ListTools = !Unfold_List_Dots_ListTools"
-                ><v-icon>mdi-dots-horizontal</v-icon>
-                </v-btn><br />
+                @click="
+                  Unfold_List_Dots_ListTools = !Unfold_List_Dots_ListTools
+                "
+                ><v-icon>mdi-dots-horizontal</v-icon> </v-btn
+              ><br />
               <div>Team Project1</div>
               <div>Team Project2</div>
               <div>Team Project3</div>
@@ -65,13 +68,20 @@
               <div>추가</div>
               <div>편집</div>
             </v-list>
-
           </div>
-          <div style="background: rgba(255, 255, 255, 0.9); color: #111; position: absolute; z-index: 11; margin: 40px 180px; width: 200px;">
-          <v-list v-if="Unfold_List_Dots_ListTools" :items="ULDLTs">
-          
-          </v-list>
-        </div>
+          <div
+            style="
+              background: rgba(255, 255, 255, 0.9);
+              color: #111;
+              position: absolute;
+              z-index: 11;
+              margin: 40px 180px;
+              width: 200px;
+            "
+            v-if="TeamTools==true"
+          >
+            <v-list v-if="Unfold_List_Dots_ListTools" :items="ULDLTs"> </v-list>
+          </div>
           <v-divider></v-divider>
 
           <v-list density="compact" nav>
@@ -119,6 +129,9 @@
           </v-list>
           <v-divider></v-divider>
           <v-list>
+            <v-list-item-title style="margin: 0px 20px"
+              >공유된 페이지</v-list-item-title
+            >
             <v-list-item
               class="title-font"
               prepend-icon="mdi-chevron-right"
@@ -138,9 +151,17 @@
             ></v-list-item>
           </v-list>
           <v-divider></v-divider>
-          <v-list> </v-list>
+          <v-list>
+            <v-list-item-title style="margin: 0px 20px"
+              >개인 페이지
+              <v-btn icon style="width: 24px; height: 24px; float: right; background: #111;"> <v-icon>mdi-plus</v-icon></v-btn>
+            </v-list-item-title>
+          </v-list>
           <v-divider></v-divider>
           <v-list>
+            <v-list-item-title style="margin: 0px 20px"
+              >팀스페이스</v-list-item-title
+            >
             <v-list-item
               prepend-icon="mdi-chevron-right"
               title="공지사항"
@@ -234,7 +255,10 @@ export default {
       RecentrecordssModal: false,
       TeamTools: false,
       Unfold_List_Dots_ListTools: false,
-      ULDLTs: [{title: "Create a team"}, {title: "편집"}]
+      ULDLTs: [
+        { title: "Create a team", value: "test5" },
+        { title: "편집", value: "test5" },
+      ],
     };
   },
   methods: {
