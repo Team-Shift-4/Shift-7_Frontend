@@ -79,7 +79,8 @@
 </template>
 
 <script setup>
-import PageRightSideNav from "@/layouts/default/PageRightSideNav.vue";
+// import PageRightSideNav from "@/layouts/default/PageRightSideNav.vue";
+import PageRightSideNav from "@/layouts/default/TestCommentList.vue";
 </script>
 
 

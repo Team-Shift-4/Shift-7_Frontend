@@ -11,21 +11,70 @@
         ><br />
       </v-card-title>
     </v-card>
-    <v-card-subtitle style="width: 90%; margin: 0px 14px; margin-top: 20px">
+    <!-- commentlist -->
+    <div style="height: auto; overflow-y: auto;">
+    <v-card-subtitle
+    style="width: 90%; margin: 0px 14px; margin-top: 20px">
       <v-divider style="width: 100%; color: #111"></v-divider>
       <v-card style="width: 100%; height: 130px; margin: 10px 0px">
         <span style="float: left; margin: 5px 20px">name</span>
+        <v-btn
+          icon
+          style="width: 24px; height: 24px; float: right; margin: 2px 5px"
+        >
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
         <span style="float: right; margin: 5px 20px">--.--.--</span>
+
         <v-divider
           style="width: 90%; margin: 0px 12px; margin-top: 30px"
         ></v-divider>
         <span style="margin: 0px 20px">comment...</span>
       </v-card>
     </v-card-subtitle>
-    
+    <v-card-subtitle
+    style="width: 90%; margin: 0px 14px; margin-top: 20px">
+      <v-divider style="width: 100%; color: #111"></v-divider>
+      <v-card style="width: 100%; height: 130px; margin: 10px 0px">
+        <span style="float: left; margin: 5px 20px">name</span>
+        <v-btn
+          icon
+          style="width: 24px; height: 24px; float: right; margin: 2px 5px"
+        >
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+        <span style="float: right; margin: 5px 20px">--.--.--</span>
+
+        <v-divider
+          style="width: 90%; margin: 0px 12px; margin-top: 30px"
+        ></v-divider>
+        <span style="margin: 0px 20px">comment...</span>
+      </v-card>
+    </v-card-subtitle>
+    <v-card-subtitle
+    style="width: 90%; margin: 0px 14px; margin-top: 20px">
+      <v-divider style="width: 100%; color: #111"></v-divider>
+      <v-card style="width: 100%; height: 130px; margin: 10px 0px">
+        <span style="float: left; margin: 5px 20px">name</span>
+        <v-btn
+          icon
+          style="width: 24px; height: 24px; float: right; margin: 2px 5px"
+        >
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+        <span style="float: right; margin: 5px 20px">--.--.--</span>
+
+        <v-divider
+          style="width: 90%; margin: 0px 12px; margin-top: 30px"
+        ></v-divider>
+        <span style="margin: 0px 20px">comment...</span>
+      </v-card>
+    </v-card-subtitle>
+  </div>
+  <!-- input -->
     <v-card
       style="
-        width: 220px;
+        width: 222px;
         height: 55px;
         background-color: #212121;
         color: white;
@@ -38,13 +87,27 @@
         label="Comment"
         variant="underlined"
         style="width: 85%; margin: 0px 15px"
+        
       ></v-text-field>
+      
     </v-card>
   </div>
 </template>
 
-<script setup>
-//
+<script>
+export default {
+  // data() {
+  //   return {
+  //     commentsbox: '',
+  //   };
+  // },
+  // methods: {
+  //   addComment() {
+  //     this.commentsbox = '';
+  //   }
+  // },
+}
+
 </script>
 
 <style>
