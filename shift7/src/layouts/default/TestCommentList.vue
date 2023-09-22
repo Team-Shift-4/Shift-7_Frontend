@@ -1,3 +1,4 @@
+<!-- v-card-subtitle 추가 순서 & 원하는 로컬스토리지 키값 제거-->
 <template>
   <div class="right-side-main">
     <v-card class="right-side-main-nav">
@@ -13,25 +14,7 @@
       </v-card-title>
     </v-card>
     <!-- commentlist -->
-    <div style="height: auto; overflow-y: auto">
-      <v-card-subtitle style="width: 90%; margin: 0px 14px; margin-top: 20px">
-        <v-divider style="width: 100%; color: #111"></v-divider>
-        <v-card style="width: 100%; height: 130px; margin: 10px 0px">
-          <span style="float: left; margin: 5px 20px">name</span>
-          <v-btn
-            icon
-            style="width: 24px; height: 24px; float: right; margin: 2px 5px"
-          >
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-          <span style="float: right; margin: 5px 20px">{{timestamp}}</span>
-
-          <v-divider
-            style="width: 90%; margin: 0px 12px; margin-top: 30px"
-          ></v-divider>
-          <span style="margin: 0px 20px">comment...</span>
-        </v-card>
-      </v-card-subtitle>
+    <!-- <div style="height: auto; overflow-y: auto"> -->
 
       <v-card-subtitle
         class="comment-list"
@@ -40,11 +23,11 @@
       >
         <v-divider style="width: 100%; color: #111"></v-divider>
         <v-card style="width: 100%; height: 130px; margin: 10px 0px">
-          <span style="float: left; margin: 5px 20px">name</span>
+          <span style="float: left; margin-left:20px; margin-top: 5px;" >user.name</span>
           <v-btn
             icon
             style="width: 24px; height: 24px; float: right; margin: 2px 5px"
-            @click="commentlistdots = !commentlistdots"
+            @click="commentlistdots[commentlist] = !commentlistdots[commentlist]"
           >
             <v-icon>mdi-dots-vertical</v-icon>
           </v-btn>
@@ -52,8 +35,9 @@
           <v-divider
             style="width: 90%; margin: 0px 12px; margin-top: 30px"
           ></v-divider>
+
           <v-list
-            v-if="commentlistdots"
+          v-if="commentlistdots[commentlist]"
             style="
               position: relative;
               background: white;
@@ -62,16 +46,14 @@
               border-radius: 10px;
             "
           >
-          <!-- 리스트마다 Key값 변경 -->
             <div style="padding: 0px 10px">수정</div>
             <v-divider></v-divider>
             <div @click="removeComment" style="padding: 0px 10px">삭제</div>
-            <!-- 삭제시 localstorage 값 제거 -->
           </v-list>
           <span style="margin: 0px 20px">{{ commentlist }}</span>
         </v-card>
       </v-card-subtitle>
-    </div>
+    <!-- </div> -->
     <!-- input -->
     <v-card
       style="
@@ -123,22 +105,21 @@
   <script>
 import GetDate from "@/getDate.js";
 
+
 export default {
   data() {
     return {
       commentsinput: "",
       commentlists: [],
-      commentlistdots: false,
+      commentlistdots: [],
       timestamp : `${GetDate().days}`,
-      // testtime: "",
     };
   },
   created() {
     if (localStorage.length > 0) {
       for (var i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
           this.commentlists.push(localStorage.getItem(localStorage.key(i)));
-        }
+          this.commentlistdots.push(false);
       }
     }
   },
@@ -153,19 +134,21 @@ export default {
     clearInputbox() {
       this.commentsinput = "";
     },
-    removeComment(commentlist, index) {
-      localStorage.removeItem(commentlist);
-      // localStorage.clear();
+    removeComment(index) {
+      for (let i=0;i<localStorage.length;i++){
+          let key = localStorage.key(i);
+        localStorage.removeItem(key);
+        // if (){
+        //   localStorage.removeItem(key);
+        //   console.log(321321);
+        //   break;
+        // }
+        console.log(key, i);
+        break;
+      }
       this.commentlists.splice(index, 1);
     },
-    elapsedText(date) {
-	return dateformat.elapsedText(new Date(date));
-},
-  },
-  computed: {
-    subTitle_Input() {
-      return this.propsData.subTitle_Input.replace("\n", "<br />");
-    },
+    
   },
 };
 </script>
