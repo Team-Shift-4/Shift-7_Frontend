@@ -30,153 +30,234 @@
               </v-btn>
             </template>
           </v-list-item>
-          <div
-            style="
-              background: rgba(255, 255, 255, 0.9);
-              color: #111;
-              position: absolute;
-              display: block;
-              margin: auto;
-              width: 300px;
-              height: auto;
-              z-index: 10;
-              border-radius: 10px;
-            "
-            v-if="rail==false"
-          >
-            <v-list class="Unfold_List_Item" v-if="TeamTools"
-              ><div style="float: left">user@mail.com</div>
-              <v-btn
-                icon
-                style="
-                  float: right;
-                  height: 24px;
-                  width: 24px;
-                  background: rgba(255, 255, 255, 0);
-                  margin: 2px 10px;
-                "
-                @click="
-                  Unfold_List_Dots_ListTools = !Unfold_List_Dots_ListTools
-                "
-                ><v-icon>mdi-dots-horizontal</v-icon> </v-btn
-              ><br />
-              <div>Team Project1</div>
-              <div>Team Project2</div>
-              <div>Team Project3</div>
-              <v-divider></v-divider>
+          <div style="height: 619px; overflow-y: auto">
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.9);
+                color: #111;
+                position: absolute;
+                display: block;
+                margin: auto;
+                width: 300px;
+                height: auto;
+                z-index: 10;
+                border-radius: 10px;
+              "
+              v-if="rail == false"
+            >
+              <v-list class="Unfold_List_Item" v-if="TeamTools"
+                ><div style="float: left">user@mail.com</div>
+                <v-btn
+                  icon
+                  style="
+                    float: right;
+                    height: 24px;
+                    width: 24px;
+                    background: rgba(255, 255, 255, 0);
+                    margin: 2px 10px;
+                  "
+                  @click="
+                    Unfold_List_Dots_ListTools = !Unfold_List_Dots_ListTools
+                  "
+                  ><v-icon>mdi-dots-horizontal</v-icon> </v-btn
+                ><br />
+                <div>Team Project1</div>
+                <div>Team Project2</div>
+                <div>Team Project3</div>
+                <v-divider></v-divider>
 
-              <div>추가</div>
-              <div>편집</div>
+                <div>추가</div>
+                <div>편집</div>
+              </v-list>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.9);
+                color: #111;
+                position: absolute;
+                z-index: 11;
+                margin: 40px 180px;
+                width: 200px;
+              "
+              v-if="TeamTools == true"
+            >
+              <v-list v-if="Unfold_List_Dots_ListTools" :items="ULDLTs">
+              </v-list>
+            </div>
+            <v-divider></v-divider>
+            <v-list-item
+            v-if="ClickMenuItems"
+            style="margin-left: 20px;"
+            prepend-icon="mdi-chevron-down"
+            title="메뉴"
+            value="menu-chevron-down"
+            @click="ClickMenuItems=!ClickMenuItems"
+            ></v-list-item>
+            <v-list-item
+            v-else
+            prepend-icon="mdi-chevron-right"
+            title="메뉴"
+            value="menu-chevron-right"
+            @click="ClickMenuItems=!ClickMenuItems"
+            ></v-list-item>
+
+            <v-list density="compact" nav v-if="ClickMenuItems">
+              <v-list-item
+                prepend-icon="mdi-magnify"
+                title="검색"
+                value="magnify"
+                @click="SearchsModal = true"
+              ></v-list-item>
+              <v-list-item
+                prepend-icon="mdi-clock-outline"
+                title="업데이트"
+                value="clock"
+                @click="UpdatesModal = true"
+              ></v-list-item>
+              <v-list-item
+                badge
+                prepend-icon="mdi-star-outline"
+                title="즐겨찾기"
+                value="star"
+                @click="FavoritessModal = true"
+              ></v-list-item>
+              <v-list-item
+                prepend-icon="mdi-bell-badge-outline"
+                title="알림"
+                value="bell"
+                @click="AlarmsModal = true"
+              ></v-list-item>
+              <v-list-item
+                prepend-icon="mdi-file-document-outline"
+                title="최근기록"
+                value="file"
+                @click="RecentrecordssModal = true"
+              ></v-list-item>
+
+              <v-list-item
+                prepend-icon="mdi-cog-outline"
+                title="설정"
+                value="cog"
+                @click="clickSetDialog"
+                ref="Setting_Com"
+              ></v-list-item>
+              <Settings ref="Setting_Com" />
+              <div style="margin: 20px"></div>
+            </v-list>
+            <v-divider></v-divider>
+            <v-list-item 
+              v-if="ClickShareItems"
+              style="margin-left: 20px;"
+              prepend-icon="mdi-chevron-down"
+              title="공유된 페이지"
+              value="share-chevron-down"
+              @click="ClickShareItems=!ClickShareItems"
+                ></v-list-item
+              >
+              <v-list-item
+              v-else
+              prepend-icon="mdi-chevron-right"
+              title="공유된 페이지"
+              value="share-chevron-right"
+              @click="ClickShareItems=!ClickShareItems"
+                ></v-list-item
+              >
+            <v-list v-if="ClickShareItems">
+              
+              <v-list-item
+                class="title-font"
+                prepend-icon="mdi-chevron-right"
+                title="MyPage"
+                value="chevron1"
+                @click="clickMyPage"
+                ><router-link :to="{ name: 'mypage' }"></router-link
+              ></v-list-item>
+
+              <v-list-item
+                class="title-font"
+                prepend-icon="mdi-chevron-right"
+                title="DocumentPage"
+                value="chevron2"
+                @click="clickDocPage"
+                ><router-link :to="{ name: 'doc' }"></router-link
+              ></v-list-item>
+            </v-list>
+            <v-divider></v-divider>
+
+            <v-list-item 
+              v-if="ClickIndividualItems"
+              style="margin-left: 20px;"
+              prepend-icon="mdi-chevron-down"
+              title="개인 페이지"
+              value="individual-chevron-down"
+              @click="ClickIndividualItems=!ClickIndividualItems"
+                ></v-list-item
+              >
+              
+              <v-list-item
+              v-else
+              prepend-icon="mdi-chevron-right"
+              title="개인 페이지"
+              value="individual-chevron-right"
+              @click="ClickIndividualItems=!ClickIndividualItems"
+                ></v-list-item
+              >
+
+              <!-- 개인 페이지 추가 버튼
+                <v-btn
+                  icon
+                  style="
+                    width: 24px;
+                    height: 24px;
+                    float: right;
+                    background: #111;
+                  "
+                >
+                  <v-icon>mdi-plus</v-icon></v-btn
+                > -->
+            <v-list v-if="ClickIndividualItems">
+              <v-list-item>1</v-list-item>
+              <v-list-item>2</v-list-item>
+              <v-list-item>3</v-list-item>
+            </v-list>
+            <v-divider></v-divider>
+            <v-list-item 
+              v-if="ClickTeamItems"
+              style="margin-left: 20px;"
+              prepend-icon="mdi-chevron-down"
+              title="팀스페이스"
+              value="team-chevron-down"
+              @click="ClickTeamItems=!ClickTeamItems"
+                ></v-list-item
+              >
+              
+              <v-list-item
+              v-else
+              prepend-icon="mdi-chevron-right"
+              title="팀스페이스"
+              value="team-chevron-right"
+              @click="ClickTeamItems=!ClickTeamItems"
+                ></v-list-item
+              >
+            <v-list v-if="ClickTeamItems">
+
+              
+              <v-list-item
+                prepend-icon="mdi-chevron-right"
+                title="공지사항"
+                value="chevron-1"
+                @click="clickAnPage"
+                ><router-link :to="{ name: 'an' }"></router-link
+              ></v-list-item>
+              <v-list-item
+                prepend-icon="mdi-chevron-right"
+                title="타임로그 / 히스토리"
+                value="chevron-2"
+                @click="clickTHPage"
+                ><router-link :to="{ name: 'th' }"></router-link
+              ></v-list-item>
             </v-list>
           </div>
-          <div
-            style="
-              background: rgba(255, 255, 255, 0.9);
-              color: #111;
-              position: absolute;
-              z-index: 11;
-              margin: 40px 180px;
-              width: 200px;
-            "
-            v-if="TeamTools==true"
-          >
-            <v-list v-if="Unfold_List_Dots_ListTools" :items="ULDLTs"> </v-list>
-          </div>
-          <v-divider></v-divider>
-
-          <v-list density="compact" nav>
-            <v-list-item
-              prepend-icon="mdi-magnify"
-              title="검색"
-              value="magnify"
-              @click="SearchsModal = true"
-            ></v-list-item>
-            <v-list-item
-              prepend-icon="mdi-clock-outline"
-              title="업데이트"
-              value="clock"
-              @click="UpdatesModal = true"
-            ></v-list-item>
-            <v-list-item
-              badge
-              prepend-icon="mdi-star-outline"
-              title="즐겨찾기"
-              value="star"
-              @click="FavoritessModal = true"
-            ></v-list-item>
-            <v-list-item
-              prepend-icon="mdi-bell-badge-outline"
-              title="알림"
-              value="bell"
-              @click="AlarmsModal = true"
-            ></v-list-item>
-            <v-list-item
-              prepend-icon="mdi-file-document-outline"
-              title="최근기록"
-              value="file"
-              @click="RecentrecordssModal = true"
-            ></v-list-item>
-
-            <v-list-item
-              prepend-icon="mdi-cog-outline"
-              title="설정"
-              value="cog"
-              @click="clickSetDialog"
-              ref="Setting_Com"
-            ></v-list-item>
-            <Settings ref="Setting_Com" />
-            <div style="margin: 20px"></div>
-          </v-list>
-          <v-divider></v-divider>
-          <v-list>
-            <v-list-item-title style="margin: 0px 20px"
-              >공유된 페이지</v-list-item-title
-            >
-            <v-list-item
-              class="title-font"
-              prepend-icon="mdi-chevron-right"
-              title="MyPage"
-              value="chevron1"
-              @click="clickMyPage"
-              ><router-link :to="{ name: 'mypage' }"></router-link
-            ></v-list-item>
-
-            <v-list-item
-              class="title-font"
-              prepend-icon="mdi-chevron-right"
-              title="DocumentPage"
-              value="chevron2"
-              @click="clickDocPage"
-              ><router-link :to="{ name: 'doc' }"></router-link
-            ></v-list-item>
-          </v-list>
-          <v-divider></v-divider>
-          <v-list>
-            <v-list-item-title style="margin: 0px 20px"
-              >개인 페이지
-              <v-btn icon style="width: 24px; height: 24px; float: right; background: #111;"> <v-icon>mdi-plus</v-icon></v-btn>
-            </v-list-item-title>
-          </v-list>
-          <v-divider></v-divider>
-          <v-list>
-            <v-list-item-title style="margin: 0px 20px"
-              >팀스페이스</v-list-item-title
-            >
-            <v-list-item
-              prepend-icon="mdi-chevron-right"
-              title="공지사항"
-              value="chevron-1"
-              @click="clickAnPage"
-              ><router-link :to="{ name: 'an' }"></router-link
-            ></v-list-item>
-            <v-list-item
-              prepend-icon="mdi-chevron-right"
-              title="타임로그 / 히스토리"
-              value="chevron-2"
-              @click="clickTHPage"
-              ><router-link :to="{ name: 'th' }"></router-link
-            ></v-list-item>
-          </v-list>
         </v-navigation-drawer>
         <v-main style="height: 100vh">
           <HeaderTool />
@@ -255,9 +336,13 @@ export default {
       RecentrecordssModal: false,
       TeamTools: false,
       Unfold_List_Dots_ListTools: false,
+      ClickMenuItems: false,
+      ClickShareItems: false,
+      ClickIndividualItems: false,
+      ClickTeamItems: false,
       ULDLTs: [
         { title: "Create a team", value: "test5" },
-        { title: "편집", value: "test5" },
+        { title: "편집", value: "test6" },
       ],
     };
   },

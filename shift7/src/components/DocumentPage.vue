@@ -12,7 +12,7 @@
         <h1>File Title</h1>
       </v-banner>
       <v-subtitle style="margin: 16px; color: #ffffff94"
-        >What is Lorem Ipsum?</v-subtitle
+        >1. What is Lorem Ipsum?</v-subtitle
       >
 
       <v-card-text>
@@ -38,7 +38,7 @@
         </div>
       </v-card-text>
       <v-subtitle style="margin: 16px; color: #ffffff94"
-        >Where does it come from?</v-subtitle
+        >2. Where does it come from?</v-subtitle
       >
       <v-card-text>
         <div class="mb-4" style="color: #767676">
@@ -71,6 +71,34 @@
           from repetition, injected humour, or non-characteristic words etc.
         </div>
       </v-card-text>
+
+      <v-subtitle style="margin: 16px; color: #ffffff94"
+        >3. What is overflow in programming?</v-subtitle
+      >
+
+      <v-card-text>
+        <div class="mb-4" style="color: #767676">
+          In general, a data type overflow error is when the data type used to
+          store data was not large enough to hold the data. Furthermore, some
+          data types can only store numbers up to a certain size. An overflow
+          error will be produced, for example, if a data type is a single byte
+          and the data to be stored is greater than 256.
+        </div>
+      </v-card-text>
+
+      <v-subtitle style="margin: 16px; color: #ffffff94">4. Examples</v-subtitle>
+
+      <v-card-text>
+        <div class="mb-4" style="color: #767676">
+          Throughout the JavaScript API listings, short code examples illustrate
+          how the API is used. You can experiment with most of these examples
+          using the console in the Toolbox. However, you need Toolbox running in
+          the context of a web extension. To do this, open about:debugging then
+          This Firefox, click Inspect against any installed or temporary
+          extension, and open Console. You can then paste and run the example
+          code in the console.
+        </div>
+      </v-card-text>
     </v-card>
 
     <v-spacer></v-spacer>
@@ -79,8 +107,7 @@
 </template>
 
 <script setup>
-// import PageRightSideNav from "@/layouts/default/PageRightSideNav.vue";
-import PageRightSideNav from "@/layouts/default/TestCommentList.vue";
+import PageRightSideNav from "@/layouts/default/PageRightSideNav.vue";
 </script>
 
 
