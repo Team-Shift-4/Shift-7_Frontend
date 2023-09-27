@@ -3,7 +3,7 @@
     <v-card class="right-side-main-nav">
       <v-card-title style="margin: 0px 0px; height: 150px; width: auto; overflow-y: auto">
         <!-- click => DocumentPage -> v-subtitle(타이틀 문장)으로 이동 -->
-        <v-btn style="width: 240px" variant="text">
+        <v-btn style="width: 240px" variant="text" >
           1. What is Lorem Ipsum?</v-btn
         >
         <br />
@@ -14,7 +14,7 @@
           3. What is overflow in ...</v-btn
         >
         <br />
-        <v-btn style="width: 240px" variant="text"> 4. Examples</v-btn><br />
+        <v-btn style="width: 240px" variant="text" @click="strSearch">4. Examples</v-btn><br />
         5.<br />
         6.<br />
         7.<br />
@@ -167,6 +167,12 @@ export default {
       }
       this.commentlists.splice(index, 1);
     },
+    // test
+    // strSearch() {
+    //   const str = '4. Examples';
+    //   console.log(str.indexOf('Examples'));
+    //   this.$emit(strSearchs, str);
+    // },
   },
 };
 </script>

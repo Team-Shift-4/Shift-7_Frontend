@@ -30,7 +30,14 @@
               </v-btn>
             </template>
           </v-list-item>
-          <div style="height: 619px; overflow-y: auto">
+          <div
+            style="
+              height: 619px;
+              width: 100%;
+              overflow-y: auto;
+              overflow-x: hidden;
+            "
+          >
             <div
               style="
                 background: rgba(255, 255, 255, 0.9);
@@ -85,22 +92,40 @@
               </v-list>
             </div>
             <v-divider></v-divider>
-            <v-list-item
-            v-if="ClickMenuItems"
-            style="margin-left: 20px;"
-            prepend-icon="mdi-chevron-down"
-            title="메뉴"
-            value="menu-chevron-down"
-            @click="ClickMenuItems=!ClickMenuItems"
-            ></v-list-item>
-            <v-list-item
-            v-else
-            prepend-icon="mdi-chevron-right"
-            title="메뉴"
-            value="menu-chevron-right"
-            @click="ClickMenuItems=!ClickMenuItems"
-            ></v-list-item>
-
+            <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+            <div v-if="rail == true">
+              <v-list-item
+                v-if="ClickMenuItems"
+                prepend-icon="mdi-chevron-down"
+                title="메뉴"
+                value="menu-chevron-down-1"
+                @click="ClickMenuItems = !ClickMenuItems"
+              ></v-list-item>
+              <v-list-item
+                v-else
+                prepend-icon="mdi-chevron-right"
+                title="메뉴"
+                value="menu-chevron-right-1"
+                @click="ClickMenuItems = !ClickMenuItems"
+              ></v-list-item>
+            </div>
+            <div v-else-if="rail == false">
+              <v-list-item
+                v-if="ClickMenuItems"
+                style="margin-left: 20px"
+                prepend-icon="mdi-chevron-down"
+                title="메뉴"
+                value="menu-chevron-down-2"
+                @click="ClickMenuItems = !ClickMenuItems"
+              ></v-list-item>
+              <v-list-item
+                v-else
+                prepend-icon="mdi-chevron-right"
+                title="메뉴"
+                value="menu-chevron-right-2"
+                @click="ClickMenuItems = !ClickMenuItems"
+              ></v-list-item>
+            </div>
             <v-list density="compact" nav v-if="ClickMenuItems">
               <v-list-item
                 prepend-icon="mdi-magnify"
@@ -133,7 +158,6 @@
                 value="file"
                 @click="RecentrecordssModal = true"
               ></v-list-item>
-
               <v-list-item
                 prepend-icon="mdi-cog-outline"
                 title="설정"
@@ -144,26 +168,42 @@
               <Settings ref="Setting_Com" />
               <div style="margin: 20px"></div>
             </v-list>
+            <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
             <v-divider></v-divider>
-            <v-list-item 
-              v-if="ClickShareItems"
-              style="margin-left: 20px;"
-              prepend-icon="mdi-chevron-down"
-              title="공유된 페이지"
-              value="share-chevron-down"
-              @click="ClickShareItems=!ClickShareItems"
-                ></v-list-item
-              >
+            <div v-if="rail == true">
               <v-list-item
-              v-else
-              prepend-icon="mdi-chevron-right"
-              title="공유된 페이지"
-              value="share-chevron-right"
-              @click="ClickShareItems=!ClickShareItems"
-                ></v-list-item
-              >
+                v-if="ClickShareItems"
+                prepend-icon="mdi-chevron-down"
+                title="공유된 페이지"
+                value="share-chevron-down-1"
+                @click="ClickShareItems = !ClickShareItems"
+              ></v-list-item>
+              <v-list-item
+                v-else
+                prepend-icon="mdi-chevron-right"
+                title="공유된 페이지"
+                value="share-chevron-right-1"
+                @click="ClickShareItems = !ClickShareItems"
+              ></v-list-item>
+            </div>
+            <div v-if="rail == false">
+              <v-list-item
+                v-if="ClickShareItems"
+                style="margin-left: 20px"
+                prepend-icon="mdi-chevron-down"
+                title="공유된 페이지"
+                value="share-chevron-down-2"
+                @click="ClickShareItems = !ClickShareItems"
+              ></v-list-item>
+              <v-list-item
+                v-else
+                prepend-icon="mdi-chevron-right"
+                title="공유된 페이지"
+                value="share-chevron-right-2"
+                @click="ClickShareItems = !ClickShareItems"
+              ></v-list-item>
+            </div>
             <v-list v-if="ClickShareItems">
-              
               <v-list-item
                 class="title-font"
                 prepend-icon="mdi-chevron-right"
@@ -172,7 +212,6 @@
                 @click="clickMyPage"
                 ><router-link :to="{ name: 'mypage' }"></router-link
               ></v-list-item>
-
               <v-list-item
                 class="title-font"
                 prepend-icon="mdi-chevron-right"
@@ -182,66 +221,113 @@
                 ><router-link :to="{ name: 'doc' }"></router-link
               ></v-list-item>
             </v-list>
+            <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
             <v-divider></v-divider>
-
-            <v-list-item 
-              v-if="ClickIndividualItems"
-              style="margin-left: 20px;"
-              prepend-icon="mdi-chevron-down"
-              title="개인 페이지"
-              value="individual-chevron-down"
-              @click="ClickIndividualItems=!ClickIndividualItems"
-                ></v-list-item
-              >
-              
+            <div v-if="rail == true">
               <v-list-item
-              v-else
-              prepend-icon="mdi-chevron-right"
-              title="개인 페이지"
-              value="individual-chevron-right"
-              @click="ClickIndividualItems=!ClickIndividualItems"
+                v-if="ClickIndividualItems"
+                prepend-icon="mdi-chevron-down"
+                value="individual-chevron-down-1"
+                @click="ClickIndividualItems = !ClickIndividualItems"
                 ></v-list-item
               >
-
-              <!-- 개인 페이지 추가 버튼
-                <v-btn
-                  icon
-                  style="
-                    width: 24px;
-                    height: 24px;
-                    float: right;
-                    background: #111;
-                  "
-                >
-                  <v-icon>mdi-plus</v-icon></v-btn
-                > -->
+              <v-list-item
+                v-else
+                prepend-icon="mdi-chevron-right"
+                value="individual-chevron-right-1"
+                @click="ClickIndividualItems = !ClickIndividualItems"
+              ></v-list-item>
+            </div>
+            <div v-if="rail == false">
+              <v-list-item
+                v-if="ClickIndividualItems"
+                style="margin-left: 20px"
+                prepend-icon="mdi-chevron-down"
+                value="individual-chevron-down-2"
+                @click="ClickIndividualItems = !ClickIndividualItems"
+                ><div style="font-size: 12px; margin-top: 5px">
+                  개인 페이지<v-btn
+                    icon
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      float: right;
+                      background: #111;
+                    "
+                    @click="DocumentCreativesModal = !DocumentCreativesModal"
+                    ><v-icon>mdi-plus</v-icon></v-btn
+                  >
+                </div></v-list-item
+              >
+              <v-list-item
+                v-else
+                prepend-icon="mdi-chevron-right"
+                value="individual-chevron-right-2"
+                @click="ClickIndividualItems = !ClickIndividualItems"
+                ><div style="font-size: 12px; margin-top: 5px">
+                  개인 페이지<v-btn
+                    icon
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      float: right;
+                      background: #111;
+                    "
+                    @click="DocumentCreativesModal = !DocumentCreativesModal"
+                    ><v-icon>mdi-plus</v-icon></v-btn
+                  >
+                </div></v-list-item
+              >
+            </div>
             <v-list v-if="ClickIndividualItems">
-              <v-list-item>1</v-list-item>
+              <v-list-item
+                v-for="repositorylist in repositorylists"
+                :key="repositorylist"
+                @click="clickRepoPage"
+                >
+                {{ repositorylist }}
+                <!-- <router-link :to="{ name: '' }"></router-link> -->
+                </v-list-item
+              >
               <v-list-item>2</v-list-item>
               <v-list-item>3</v-list-item>
             </v-list>
+            <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
             <v-divider></v-divider>
-            <v-list-item 
-              v-if="ClickTeamItems"
-              style="margin-left: 20px;"
-              prepend-icon="mdi-chevron-down"
-              title="팀스페이스"
-              value="team-chevron-down"
-              @click="ClickTeamItems=!ClickTeamItems"
-                ></v-list-item
-              >
-              
+            <div v-if="rail == true">
               <v-list-item
-              v-else
-              prepend-icon="mdi-chevron-right"
-              title="팀스페이스"
-              value="team-chevron-right"
-              @click="ClickTeamItems=!ClickTeamItems"
-                ></v-list-item
-              >
+                v-if="ClickTeamItems"
+                prepend-icon="mdi-chevron-down"
+                title="팀스페이스"
+                value="team-chevron-down-1"
+                @click="ClickTeamItems = !ClickTeamItems"
+              ></v-list-item>
+              <v-list-item
+                v-else
+                prepend-icon="mdi-chevron-right"
+                title="팀스페이스"
+                value="team-chevron-right-1"
+                @click="ClickTeamItems = !ClickTeamItems"
+              ></v-list-item>
+            </div>
+            <div v-if="rail == false">
+              <v-list-item
+                v-if="ClickTeamItems"
+                style="margin-left: 20px"
+                prepend-icon="mdi-chevron-down"
+                title="팀스페이스"
+                value="team-chevron-down-2"
+                @click="ClickTeamItems = !ClickTeamItems"
+              ></v-list-item>
+              <v-list-item
+                v-else
+                prepend-icon="mdi-chevron-right"
+                title="팀스페이스"
+                value="team-chevron-right-2"
+                @click="ClickTeamItems = !ClickTeamItems"
+              ></v-list-item>
+            </div>
             <v-list v-if="ClickTeamItems">
-
-              
               <v-list-item
                 prepend-icon="mdi-chevron-right"
                 title="공지사항"
@@ -257,13 +343,12 @@
                 ><router-link :to="{ name: 'th' }"></router-link
               ></v-list-item>
             </v-list>
+            <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
           </div>
         </v-navigation-drawer>
         <v-main style="height: 100vh">
           <HeaderTool />
-
           <router-view />
-
           <SearchModal
             v-if="SearchsModal"
             @close-search-modal="SearchsModal = false"
@@ -284,6 +369,11 @@
             v-if="RecentrecordssModal"
             @close-recentrecords-modal="RecentrecordssModal = false"
           ></RecentrecordsModal>
+          <DocumentCreativeModal
+          @document-creative="addRepositoryLists"
+            v-if="DocumentCreativesModal"
+            @close-creative-modal="DocumentCreativesModal = false"
+          ></DocumentCreativeModal>
         </v-main>
       </v-app>
     </v-layout>
@@ -303,10 +393,10 @@ import UpdateModal from "./UpdatesModal.vue";
 import FavoritesModal from "./FavoritesModal.vue";
 import AlarmModal from "./AlarmModal.vue";
 import RecentrecordsModal from "./RecentrecordsModal.vue";
+import DocumentCreativeModal from "./DocumentCreativeModal.vue";
 import AnnouncementPage from "./AnnouncementPage.vue";
 
 const router = useRouter();
-
 const drawer = ref(true);
 const rail = ref(true);
 </script>
@@ -323,6 +413,7 @@ export default {
     FavoritesModal,
     AlarmModal,
     RecentrecordsModal,
+    DocumentCreativeModal,
     AnnouncementPage,
   ],
   data() {
@@ -334,17 +425,22 @@ export default {
       FavoritessModal: false,
       AlarmsModal: false,
       RecentrecordssModal: false,
+      DocumentCreativesModal: false,
       TeamTools: false,
       Unfold_List_Dots_ListTools: false,
       ClickMenuItems: false,
       ClickShareItems: false,
       ClickIndividualItems: false,
       ClickTeamItems: false,
+      repositorylists: [],
       ULDLTs: [
         { title: "Create a team", value: "test5" },
         { title: "편집", value: "test6" },
       ],
     };
+  },
+  created( ) {
+    
   },
   methods: {
     clickMyPage() {
@@ -370,7 +466,17 @@ export default {
     clickSetDialog() {
       this.$refs.Setting_Com.dialog = "true";
     },
+    // clickRepoPage() {
+    //   this.router.push({
+    //     name: "",
+    //   });
+    // },
+    addRepositoryLists(creativeinput) {
+      this.repositorylists.push(creativeinput);
+      // 라우터 링크 추가
+    },
   },
+  
 };
 </script>
 

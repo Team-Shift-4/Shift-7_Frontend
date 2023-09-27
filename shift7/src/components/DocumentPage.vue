@@ -102,7 +102,7 @@
     </v-card>
 
     <v-spacer></v-spacer>
-    <PageRightSideNav />
+    <PageRightSideNav @str-searchs="onStrSearchs"/>
   </div>
 </template>
 
@@ -114,6 +114,11 @@ import PageRightSideNav from "@/layouts/default/PageRightSideNav.vue";
 <script>
 export default {
   components: [PageRightSideNav],
+  methods: {
+    onStrSearchs(str) {
+      console.log(str)
+    }
+  },
 };
 </script>
 
