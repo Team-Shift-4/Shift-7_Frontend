@@ -11,6 +11,7 @@
         v-model="creativeinput"
         placeholder="생성할 파일 제목을 입력하세요."
         style="width: 80%; height: 40px"
+        @keyup.enter="creativeSubmitEvent"
       />
       <v-btn
         @click="addDocument"
@@ -34,6 +35,9 @@ export default {
         this.$emit('documentCreative', this.creativeinput);
         this.clearDocumentInputbox();
       }
+    },
+    creativeSubmitEvent() {
+      this.addDocument();
     },
     clearDocumentInputbox() {
       this.creativeinput = "";

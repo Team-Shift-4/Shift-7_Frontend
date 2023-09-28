@@ -229,8 +229,7 @@
                 prepend-icon="mdi-chevron-down"
                 value="individual-chevron-down-1"
                 @click="ClickIndividualItems = !ClickIndividualItems"
-                ></v-list-item
-              >
+              ></v-list-item>
               <v-list-item
                 v-else
                 prepend-icon="mdi-chevron-right"
@@ -281,16 +280,28 @@
             </div>
             <v-list v-if="ClickIndividualItems">
               <v-list-item
-                v-for="repositorylist in repositorylists"
-                :key="repositorylist"
+                v-for="(repositorylist, index) in repositorylists"
+                :key="index"
                 @click="clickRepoPage"
-                >
+              >
                 {{ repositorylist }}
                 <!-- <router-link :to="{ name: '' }"></router-link> -->
-                </v-list-item
-              >
-              <v-list-item>2</v-list-item>
-              <v-list-item>3</v-list-item>
+                <v-btn
+                  icon
+                  style="
+                    width: 24px;
+                    height: 24px;
+                    float: right;
+                    background-color: #111;
+                  "
+                  @click="DeleteRepositoryItem(index)"
+                  >X</v-btn
+                >
+              </v-list-item>
+              <v-list-item 
+              prepend-icon="mdi-file-document-outline"
+              value="document-file-1"
+              @click="clickDFPage"><v-list-item-title>Test Document File</v-list-item-title> </v-list-item>
             </v-list>
             <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
             <v-divider></v-divider>
@@ -370,7 +381,7 @@
             @close-recentrecords-modal="RecentrecordssModal = false"
           ></RecentrecordsModal>
           <DocumentCreativeModal
-          @document-creative="addRepositoryLists"
+            @document-creative="addRepositoryLists"
             v-if="DocumentCreativesModal"
             @close-creative-modal="DocumentCreativesModal = false"
           ></DocumentCreativeModal>
@@ -395,6 +406,7 @@ import AlarmModal from "./AlarmModal.vue";
 import RecentrecordsModal from "./RecentrecordsModal.vue";
 import DocumentCreativeModal from "./DocumentCreativeModal.vue";
 import AnnouncementPage from "./AnnouncementPage.vue";
+import DocumentFilePage from "./DocumentFilePage.vue";
 
 const router = useRouter();
 const drawer = ref(true);
@@ -415,6 +427,7 @@ export default {
     RecentrecordsModal,
     DocumentCreativeModal,
     AnnouncementPage,
+    DocumentFilePage,
   ],
   data() {
     return {
@@ -439,9 +452,7 @@ export default {
       ],
     };
   },
-  created( ) {
-    
-  },
+  created() {},
   methods: {
     clickMyPage() {
       this.$router.push({
@@ -463,6 +474,11 @@ export default {
         name: "an",
       });
     },
+    clickDFPage() {
+      this.$router.push({
+        name: "df",
+      });
+    },
     clickSetDialog() {
       this.$refs.Setting_Com.dialog = "true";
     },
@@ -475,8 +491,10 @@ export default {
       this.repositorylists.push(creativeinput);
       // 라우터 링크 추가
     },
+    DeleteRepositoryItem(index) {
+      this.repositorylists.splice(index, 1);
+    }
   },
-  
 };
 </script>
 

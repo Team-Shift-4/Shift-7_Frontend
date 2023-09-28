@@ -36,6 +36,11 @@ const routes = [
         name: 'an',
         component: () => import('@/components/AnnouncementPage.vue')
       },
+      {
+        path: '/df',
+        name: 'df',
+        component: () => import('@/components/DocumentFilePage.vue')
+      },
       // {
       //   path: '/set',
       //   name: 'set',
