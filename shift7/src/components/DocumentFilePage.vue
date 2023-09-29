@@ -16,7 +16,7 @@
         style="background-color: #111; color: white"
         ><h1>Test Document File</h1></v-banner
       >
-      <!-- <div v-for=""> -->
+
       <v-subtitle style="margin: 16px; color: #ffffff94"
         >1. Examples</v-subtitle
       >
@@ -31,8 +31,28 @@
           code in the console.
         </div>
       </v-card-text>
-    <!-- </div> -->
+      <div
+        v-for="(documentfilelist, index) in (document_file_list_title,
+        document_file_list_contents)"
+        :key="index"
+      >
+        <v-subtitle style="margin: 16px; color: #ffffff94">{{
+          document_file_list_title[index]
+        }}</v-subtitle>
+        <v-btn
+          icon
+          style="width: 24px; height: 24px; background-color: #111"
+          @click="removeContents(documentfilelist, index)"
+          >X</v-btn
+        >
+        <v-card-text>
+          <div class="mb-4" style="color: #767676">
+            {{ documentfilelist }}
+          </div>
+        </v-card-text>
+      </div>
     </v-card>
+
     <div class="l-line"></div>
     <div style="margin: 30px 70px">
       <v-card style="position: relative; background-color: #111">
@@ -41,9 +61,10 @@
           style="
             background-color: #111;
             height: 50px;
-            width: 41vw;
+            width: 40vw;
             color: white;
             border: white 0.1px solid;
+            margin-left: 2px;
           "
           v-model="subtitleinput"
         />
@@ -54,10 +75,11 @@
         <v-card-title style="color: white">File Contents</v-card-title>
         <textarea
           style="
-            width: 41vw;
+            width: 40vw;
             height: 50vh;
             color: white;
             border: white 0.1px solid;
+            margin-left: 1px;
           "
           v-model="filecontentsinput"
           @keyup.shift.enter="printSubmitEvent"
@@ -70,49 +92,81 @@
           float: right;
           margin-top: 15px;
         "
+        @click="pageSubmitEvent"
+        >저장</v-btn
+      >
+      <v-btn
+        style="
+          background-color: #232323;
+          color: white;
+          float: right;
+          margin-top: 15px;
+          margin-right: 10px;
+        "
         @click="addRegistration"
         >등록</v-btn
       >
+      
     </div>
   </div>
 </template>
+
 <script>
+
 export default {
-    data() {
-        return {
-            subtitleinput: "",
-            filecontentsinput: "",
-            documentfilelists: [
-                {
-                    title: "",
-                    contents: "",
-                },
-            ],
-            
-                
-        };
+  data() {
+    return {
+      subtitleinput: "",
+      filecontentsinput: "",
+      document_file_list_title: [],
+      document_file_list_contents: [],
+    };
+  },
+  created() {
+    if (sessionStorage.length > 0) {
+      for (var i = 0; i < sessionStorage.length; i++) {
+        this.document_file_list_title.push(sessionStorage.key(i));
+        this.document_file_list_contents.push(
+          sessionStorage.getItem(sessionStorage.key(i))
+        );
+      }
+      this.document_file_list_title.sort();
+      this.document_file_list_contents.sort();
+    }
+  },
+  methods: {
+    addRegistration() {
+      if (this.subtitleinput !== "" && this.filecontentsinput !== "") {
+        var title_input_value = this.subtitleinput && this.subtitleinput.trim();
+        var content_input_value =
+          this.filecontentsinput && this.filecontentsinput.trim();
+        sessionStorage.setItem(title_input_value, content_input_value);
+        this.clearInputbox();
+        history.go(0);
+      }
     },
-    methods: {
-        addRegistration() {
-            if (this.subtitleinput !== "" && this.filecontentsinput !== ""){
-                // this.documentfilelists.documentfile.title = this.subtitleinput;
-                this.documentfilelists.title.push(this.subtitleinput);
-                console.log(this.documentfilelists.title.value);
-                console.log(12);
-                this.documentfilelists.contents = this.filecontentsinput;
-                console.log(this.documentfilelists.contents);
-                this.clearInputbox();
-                // history.go(0);
-            }
-        },
-        printSubmitEvent() {
-            this.addRegistration();
-        },
-        clearInputbox() {
-            this.subtitleinput = "";
-            this.filecontentsinput = "";
-        },
+    printSubmitEvent() {
+      this.addRegistration();
     },
+    clearInputbox() {
+      this.subtitleinput = "";
+      this.filecontentsinput = "";
+    },
+    removeContents(documentfilelist, index) {
+      for (let i = 0; i < sessionStorage.length; i++) {
+        if (sessionStorage.getItem(sessionStorage.key(i)) == documentfilelist) {
+          sessionStorage.removeItem(sessionStorage.key(i));
+          break;
+        }
+        console.log(sessionStorage.key(i));
+      }
+      this.document_file_list_title.splice(index, 1);
+      this.document_file_list_contents.splice(index, 1);
+    },
+    pageSubmitEvent() {
+
+    },
+  },
 };
 </script>
 

@@ -88,6 +88,11 @@
     components: [
       EditSideNav,
     ],
+    data() {
+      return {
+        
+      }
+    },
   };
   </script>
   

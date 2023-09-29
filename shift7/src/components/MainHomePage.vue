@@ -253,6 +253,17 @@
                       float: right;
                       background: #111;
                     "
+                    @click="DeleteRepositoryItems = !DeleteRepositoryItems"
+                    ><v-icon>mdi-close</v-icon></v-btn
+                  >
+                  <v-btn
+                    icon
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      float: right;
+                      background: #111;
+                    "
                     @click="DocumentCreativesModal = !DocumentCreativesModal"
                     ><v-icon>mdi-plus</v-icon></v-btn
                   >
@@ -272,19 +283,33 @@
                       float: right;
                       background: #111;
                     "
+                    @click="DeleteRepositoryItems = !DeleteRepositoryItems"
+                    ><v-icon>mdi-close</v-icon></v-btn
+                  >
+                  <v-btn
+                    icon
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      float: right;
+                      background: #111;
+                    "
                     @click="DocumentCreativesModal = !DocumentCreativesModal"
                     ><v-icon>mdi-plus</v-icon></v-btn
                   >
                 </div></v-list-item
               >
             </div>
-            <v-list v-if="ClickIndividualItems">
+            <v-list v-if="ClickIndividualItems && DeleteRepositoryItems">
               <v-list-item
                 v-for="(repositorylist, index) in repositorylists"
                 :key="index"
+                prepend-icon="mdi-file-document-outline"
+                value="document-file-{{ index }}"
                 @click="clickRepoPage"
               >
                 {{ repositorylist }}
+
                 <!-- <router-link :to="{ name: '' }"></router-link> -->
                 <v-btn
                   icon
@@ -298,10 +323,34 @@
                   >X</v-btn
                 >
               </v-list-item>
-              <v-list-item 
-              prepend-icon="mdi-file-document-outline"
-              value="document-file-1"
-              @click="clickDFPage"><v-list-item-title>Test Document File</v-list-item-title> </v-list-item>
+              <v-list-item
+                prepend-icon="mdi-file-document-outline"
+                value="document-file-1000"
+                @click="clickDFPage"
+                ><v-list-item-title>Test Document File</v-list-item-title>
+              </v-list-item>
+            </v-list>
+
+            <v-list
+              v-if="ClickIndividualItems && DeleteRepositoryItems == false"
+            >
+              <v-list-item
+                v-for="(repositorylist, index) in repositorylists"
+                :key="index"
+                prepend-icon="mdi-file-document-outline"
+                value="document-file-{{ index }}"
+                @click="clickRepoPage"
+              >
+                <v-list-item-title>{{ repositorylist }}</v-list-item-title>
+
+                <!-- <router-link :to="{ name: '' }"></router-link> -->
+              </v-list-item>
+              <v-list-item
+                prepend-icon="mdi-file-document-outline"
+                value="document-file-1000"
+                @click="clickDFPage"
+                ><v-list-item-title>Test Document File</v-list-item-title>
+              </v-list-item>
             </v-list>
             <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
             <v-divider></v-divider>
@@ -445,6 +494,7 @@ export default {
       ClickShareItems: false,
       ClickIndividualItems: false,
       ClickTeamItems: false,
+      DeleteRepositoryItems: false,
       repositorylists: [],
       ULDLTs: [
         { title: "Create a team", value: "test5" },
@@ -493,7 +543,7 @@ export default {
     },
     DeleteRepositoryItem(index) {
       this.repositorylists.splice(index, 1);
-    }
+    },
   },
 };
 </script>

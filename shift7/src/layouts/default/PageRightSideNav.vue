@@ -2,7 +2,7 @@
   <div class="right-side-main">
     <v-card class="right-side-main-nav">
       <v-card-title style="margin: 0px 0px; height: 150px; width: auto; overflow-y: auto">
-        <!-- click => DocumentPage -> v-subtitle(타이틀 문장)으로 이동 -->
+        <!-- click => DocumentPage -> v-subtitle(타이틀 문장)으로 이동 / 하이퍼링크 테스트-->
         <v-btn style="width: 240px" variant="text" >
           1. What is Lorem Ipsum?</v-btn
         >
